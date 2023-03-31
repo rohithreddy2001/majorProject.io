@@ -1,0 +1,28 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item">
+            <!--<div class="img-fill">-->
+                <img src="{% static 'images/home.jpg' %}" alt="">
+                <div class="text-content">
+                    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <center>
+            <table>
+               <!--<tr><td>Name<input type="text" name="name" value=""><br><br><br></td></tr>-->
+                <tr><td> File<input type="file" name="file" value="file"><br><br><br></td></tr>
+                <tr><td><button type="submit" >Save</button></tr></td>
+            </table>
+        </center>
+</form>
+
+                </div>
+            </div>
+          </div>
+{% endblock %}
+
+

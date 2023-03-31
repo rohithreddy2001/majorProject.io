@@ -1,0 +1,43 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item">
+            <!--<div class="img-fill">-->
+                <img src="{% static 'images/home.jpg' %}" alt="">
+                <div class="text-content">
+                    <center><h3>
+                        <table border="2px">
+
+                    <tr>
+                <th>S.No</th>
+                <th >name</th>
+                <th>Email</th>
+                <th>mobileno</th>
+                <th>status</th>
+                        <th>activate</th>
+
+                {% for i in object %}
+                         <tr>
+                         <td>{{ i.id }}</td>
+                         <td>{{ i.name }}</td>
+                         <td>{{ i.email }}</td>
+                         <td>{{ i.mobileno }}</td>
+                         <td>{{ i.status }}</td>
+                             {% if i.status == 'waiting' %}
+                                    <td style="color:orange"> <a href="/activatepatient/?pid={{ i.id }}">Activate</a></td>
+                                    {% else %}
+                                            <td style="color:orange"> Activated</td>
+                                            {% endif %}
+
+                                     </tr>
+                                    {% endfor %}
+                    </h3></center>
+
+                </div>
+            </div>
+          </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'doctorbase.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item">
+            <!--<div class="img-fill">-->
+                <img src="{% static 'images/home.jpg' %}" alt="">
+                <div class="text-content">
+                    <center>
+                    {% for i in object %}
+                    <form action="/treatment/" method="post">
+                        {% csrf_token %}
+                        name: <td style="color:red"><input type="text" name="name" value="{{i.name}}" readonly></td></br></br>
+                       email: <td style="color:red"><input type="text" name="email" value="{{i.email}}" readonly></td></br></br>
+                       symptomps: <td style="color:red"><input type="text" name="symp" value="{{i.symptomps}}" readonly></td></br></br>
+                        treatment:<td><textarea  rows="6"  name="treatment"></textarea></td></br>
+                        <input type="submit" value="submit">
+
+                    </form>
+                    {% endfor %}
+                    </center>
+                </div>
+            </div>
+          </div>
+{% endblock %}

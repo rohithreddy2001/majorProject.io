@@ -1,0 +1,30 @@
+{% extends 'patientbase.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item">
+            <!--<div class="img-fill">-->
+                <img src="{% static 'images/home.jpg' %}" alt="">
+                <div class="text-content">
+                    <table border="2px">
+                        <tr><td>name</td>
+                        <td>mail</td>
+                        <td>symptomps</td>
+                        <td>treatment</td></tr>
+                        {% for i in obj %}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.symptomps}}</td>
+                            <td>{{i.treatment}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+            </div>
+          </div>
+{% endblock %}
