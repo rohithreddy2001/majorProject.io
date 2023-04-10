@@ -14,12 +14,12 @@
 
                     <tr>
                 <th>S.No</th>
-                <th >name</th>
+                <th>name</th>
                 <th>Email</th>
                 <th>mobileno</th>
                 <th>specialization</th>
                 <th>status</th>
-                        <th>activate</th>
+                <th>activate</th>
 
                 {% for i in object %}
                          <tr>
@@ -32,7 +32,7 @@
                              {% if i.status == 'waiting' %}
                                     <td style="color:orange"> <a href="/activatedoctor/?pid={{ i.id }}" >Activate</a></td>
                                     {% else %}
-                                            <td style="color:orange"> Activated</td>
+                                            <td style="color:Green"> Activated</td>
                                             {% endif %}
 
                                      </tr>

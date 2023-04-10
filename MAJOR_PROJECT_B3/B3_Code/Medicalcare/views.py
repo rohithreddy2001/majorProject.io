@@ -10,10 +10,10 @@ from patient.forms import patientForm
 from doctor.models import doctorModel, storedatamodel
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 import pandas as pd
 from django_pandas.io import read_frame
-from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
 from sklearn import datasets
 
@@ -116,10 +116,14 @@ def svm(request):
     y_pred = svclassifier.predict(X_test)
     m = confusion_matrix(y_test, y_pred)
     accurancy = classification_report(y_test, y_pred)
-    print(m)
+    
     print(accurancy)
+    print("Confusion Matrix")
+    print(" ")
+    print(m)
     x = accurancy.split()
-    print("Toctal splits ", len(x))
+    print(" ")
+    print("Toctal splits: ", len(x))
     dict = {
 
         "m": m,
@@ -180,21 +184,27 @@ def decision(request):
     dataset1 = data.iloc[:,-1].values
     print("y",dataset1)
     print("shape",dataset.shape)
-
-
-    dataset = datasets.load_iris()
-    model = GaussianNB()
-    model.fit(dataset.data, dataset.target)
-    expected = dataset.target
-    predicted = model.predict(dataset.data)
-    accurancy = metrics.classification_report(expected, predicted)
-    print("accurancy", accurancy)
-    # print(metrics.classification_report(expected, predicted))
-    print(metrics.confusion_matrix(expected, predicted))
+    X = dataset
+    y = dataset1
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1/3,random_state=0)
+    from sklearn.tree import DecisionTreeClassifier
+    dt =DecisionTreeClassifier()
+    dt.fit(X_train, y_train)
+    #print(svclassifier.predict([0.58, 0.76]))
+    y_pred = dt.predict(X_test)
+    m = confusion_matrix(y_test, y_pred)
+    accurancy = classification_report(y_test, y_pred)
+    
+    print(accurancy)
+    print("Confusion Matrix")
+    print(" ")
+    print(m)
     x = accurancy.split()
-    print("Toctal splits ", len(x))
+    print(" ")
+    print("Toctal splits: ", len(x))
     dict = {
 
+        "m": m,
         "accurancy": accurancy,
         'len0': x[0],
         'len1': x[1],
@@ -225,12 +235,11 @@ def decision(request):
         'len26': x[26],
         'len27': x[27],
         'len28': x[28],
-        'len29': x[29],
-        'len30': x[30],
-        'len31': x[31],
-        'len32': x[32],
-        'len33': x[33],
-
+        # 'len29': x[29],
+        # 'len30': x[30],
+        # 'len31': x[31],
+        # 'len32': x[32],
+        # 'len33': x[33],
 
     }
     return render(request, 'admin/navieaccuracy.html', dict)

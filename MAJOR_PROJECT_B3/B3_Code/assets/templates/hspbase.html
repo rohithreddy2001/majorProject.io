@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Breezed HTML Bootstrap Template</title>
+    <title>Accuracy Prediction</title>
 
 <!--
 
@@ -52,9 +52,9 @@ https://templatemo.com/tm-543-breezed
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        {% comment %} <a href="index.html" class="logo">
                             .BREEZED
-                        </a>
+                        </a> {% endcomment %}
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -62,9 +62,9 @@ https://templatemo.com/tm-543-breezed
                             <li class="scroll-to-section"><a href="{% url 'uploadpatientdata' %}">uploadpatinetdata</a></li>
                             <li class="scroll-to-section"><a href="{% url 'viewpatientdata' %}">viewpatientdata</a></li>
                             <li class="scroll-to-section"><a href="{% url 'logout' %}">logout</a></li>
-                            <div class="search-icon">
+                            {% comment %} <div class="search-icon">
                                 <a href="#search"><i class="fa fa-search"></i></a>
-                            </div>
+                            </div> {% endcomment %}
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
